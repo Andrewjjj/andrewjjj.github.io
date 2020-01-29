@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="css/main.css">
+
+<button id="BFSBtn" onclick="startSearch('BFS');">Start BFS</button> 
+<button id="BFSBtn" onclick="startBidirectionalBFS();">Start Bidirectional BFS</button> 
+<button id="DFSBtn" onclick="startSearch('DFS');">Start DFS</button> 
+<button id="DijkstraBtn" onclick="startSearch('Dijkstra');">Start Dijkstra</button> 
+<button id="DFS Maze" onclick="startDFSMaze();">Start DFS Maze</button> 
+<button id="Eler" onclick="startEllerMaze();">Start Eller</button> 
+<button id="Eler" onclick="startKruskalMaze();">Start Kruskal</button> 
+
+
+<button onclick="reset()">Reset</button> 
+<button onclick="resetWall()">ResetWall</button> 
+<div id='grid-container'>
+    
+</div>
+
+<!-- <script type="module" src="js/algorithms/BFS.js"></script>
+<script type="module" src="js/algorithms/DFS.js"></script>
+<script type="module" src="js/algorithms/Queue.js"></script>
+<script type="module" src="js/algorithms/Stack.js"></script> -->
+<script src="js/algorithms/pathfinder/BFS.js"></script>
+<script src="js/algorithms/pathfinder/DFS.js"></script>
+<script src="js/algorithms/pathfinder/Dijkstra.js"></script>
+<script src="js/algorithms/DS/Queue.js"></script>
+<script src="js/algorithms/DS/Stack.js"></script>
+<script src="js/algorithms/maze/DFSMaze.js"></script>
+<script src="js/algorithms/maze/Eller.js"></script>
+<script src="js/algorithms/maze/RandomizedKruskal.js"></script>
+
+<script src='js/Node.js'></script>
+<script src='js/main.js'></script>
