@@ -1,4 +1,4 @@
-# Pathfinding-Visualizer
+# Pathfinding / Maze-Generation Algorithm Visualizer
 Pathfinding Visualizer
 
 ## Introduction
