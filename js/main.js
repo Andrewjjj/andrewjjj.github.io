@@ -252,7 +252,7 @@ function startSearch(searchMethod){
     .then(() => {
         if(!valid) alert("No Valid Path Found!")
         enableButtons();
-    })
+    })    
 }
 
 function startBidirectionalBFS(){
@@ -285,7 +285,7 @@ function startDFSMaze(){
     console.log(wallArray)
     let pathArray=DepthFirstSearchMaze(GRID_WIDTH-1, GRID_HEIGHT-1);
     animateMaze(wallArray, pathArray);
-
+    
 }
 
 function startEllerMaze(){
@@ -449,3 +449,4 @@ window.onmouseup = (e) => {
 //   document.onmousedown = disableselect
 //   document.onclick = reEnable
 // }
+
