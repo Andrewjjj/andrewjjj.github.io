@@ -90,7 +90,6 @@ function BidirectionalBFS(startNode, endNode){
         }
         break;
     }
-
 }
 
 function shortestPath(startNode, endNode){

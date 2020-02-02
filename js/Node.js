@@ -3,6 +3,8 @@
 class NodeBox{
     constructor(){
         this.nodeBox=[];
+        this.startNodePos;
+        this.endNodePos;
     }
 
     set(nodeBox){
@@ -11,6 +13,13 @@ class NodeBox{
 
     get(x, y){
         return this.nodeBox[y][x];
+    }
+
+    setStartNodePos(){
+
+    }
+    setEndNodePos(){
+
     }
 
     DEBUG_show(){
@@ -97,7 +106,9 @@ class Node {
 
     reset(){
         this.visited = false;
-        this.divChild.className = " node";
+        if(!this.startNode && !this.endNode){
+            this.divChild.className = " node";
+        }
         this.prev = null;
         this.wall = false;
         this.wallVisited = false;
@@ -107,6 +118,12 @@ class Node {
         this.visited1 = false;
         this.visited2 = false;
         this.setNumber = null;
+        if(this.startNode){
+            this.setStart();
+        }
+        if(this.endNode){
+            this.setEnd();
+        }
     }
 
     switchWall(){
@@ -140,9 +157,19 @@ class Node {
         this.wall = false;
     }
 
-    
+    setStart(){
+        this.startNode = true;
+        this.divChild.className = "startNode";
+    }
 
-    // DEBUG_cancel(){
+    setEnd(){
+        this.endNode = true;
+        this.divChild.className = "endNode";
+    }
 
-    // }
+    resetNode(){
+        this.divChild.className = " node";
+        this.startNode = false;
+        this.endNode = false;
+    }
 }

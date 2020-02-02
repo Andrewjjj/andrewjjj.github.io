@@ -1,24 +1,191 @@
 <link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<button id="BFSBtn" onclick="startSearch('BFS');">Start BFS</button> 
-<button id="BFSBtn" onclick="startBidirectionalBFS();">Start Bidirectional BFS</button> 
-<button id="DFSBtn" onclick="startSearch('DFS');">Start DFS</button> 
-<button id="DijkstraBtn" onclick="startSearch('Dijkstra');">Start Dijkstra</button> 
-<button id="DFS Maze" onclick="startDFSMaze();">Start DFS Maze</button> 
-<button id="Eler" onclick="startEllerMaze();">Start Eller</button> 
-<button id="Eler" onclick="startKruskalMaze();">Start Kruskal</button> 
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="https://github.com/Andrewjjj">Andrew's Github Page</a>
 
+    <!-- Links -->
+    <!-- <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link 1</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link 2</a>
+        </li> -->
 
-<button onclick="reset()">Reset</button> 
-<button onclick="resetWall()">ResetWall</button> 
+        <!-- <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#">Navbar 2</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div> -->
+    </ul>
+    <ul class="navbar-nav navbar-center">
+        <li class="nav-item">
+            <a class="navbar-brand" href="javascript:void(0)">Maze Generation / Pathfinding Algorithm Visualizer</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav navbar-right">
+        <li class="nav-item">
+            <a class="navbar-brand" href="https://github.com/Andrewjjj">Credits</a>
+        </li>
+    </ul>
+</nav>
+
+<nav class="navbar navbar-expand-lg" style="background-color: #9cc3dd;">
+    <div class="btn-group">
+        <div class="dropdown btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" id="mazeBtn">
+            Maze Generation Algorithms
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownMaze(event, 0)">DFS Maze</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownMaze(event, 1)">Eller's Algorithm</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownMaze(event, 2)">Randomized Kruskal's Algorithm</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownMaze(event, 3) disabled">Randomized Prim's Algorithm</a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="beginMaze()" id="beginMazeBtn">Begin Maze Generation</button>
+    </div>
+
+    <div class="btn-group">
+        <div class="dropdown btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" id="searchBtn">
+            Search Algorithms
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownSearch(event, 0)">Bredth First Search</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownSearch(event, 1)">Bidirectional Bredth First Search</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownSearch(event, 2)">Depth First Search</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownSearch(event, 3)">Dijkstra's Algorithm</a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success" onclick="beginSearch()" id="beginSearchBtn">Begin Search</button>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger" onclick="reset()" id="resetBtn">Reset</button>
+    </div>
+
+    <div class="btn-group" style="text-align: center">
+        currentSpeed:
+        <div id="currentSpeed"></div>
+    </div>
+
+    <div class="btn-group" style="display: block !important; text-align: center">
+        <p>
+            Animation Speed:
+        </p>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="20" value="4" class="slider" id="myRange">
+        </div>
+    </div>
+
+    <!-- <div class="align-right">
+        <button type="button" class="btn btn-secondary dropdown-toggle" onclick="showMoreMenu()">
+            More
+        </button>
+    </div> -->
+
+    <!-- <div class="sidebar">
+        <div class="search">
+            <button id="BFSBtn" onclick="startSearch('BFS');">Start BFS</button>
+            <button id="BFSBtn" onclick="startBidirectionalBFS();">Start Bidirectional BFS</button>
+            <button id="DFSBtn" onclick="startSearch('DFS');">Start DFS</button>
+            <button id="DijkstraBtn" onclick="startSearch('Dijkstra');">Start Dijkstra</button>
+        </div>
+        <div class="maze">
+            <button id="DFS Maze" onclick="startDFSMaze();">Start DFS Maze</button>
+            <button id="Eler" onclick="startEllerMaze();">Start Eller</button>
+            <button id="Eler" onclick="startKruskalMaze();">Start Kruskal</button>
+        </div>
+        <div class="util">
+            <button onclick="reset()">Reset</button>
+            <button onclick="resetWall()">ResetWall</button>
+        </div>
+    </div> -->
+</nav>
+
 <div id='grid-container'>
-    
+
 </div>
 
-<!-- <script type="module" src="js/algorithms/BFS.js"></script>
-<script type="module" src="js/algorithms/DFS.js"></script>
-<script type="module" src="js/algorithms/Queue.js"></script>
-<script type="module" src="js/algorithms/Stack.js"></script> -->
+<script>
+let currentMaze = -1;
+let currentSearch = -1;
+function dropdownSearch(e, value){
+    console.log(e.srcElement.innerHTML)
+    let searchDropdown = document.getElementById("searchBtn");
+    // let searchList = ["Bredth First Search", "Bidirectional Bredth First Search", "Depth First Search", "Dijkstra's Algorithm"];
+    searchDropdown.innerHTML = e.srcElement.innerHTML;
+    currentSearch = value
+    // console.log(searchDropdown)
+}
+
+function dropdownMaze(e, value){
+    let mazeDropdown = document.getElementById("mazeBtn");
+    // let searchList = ["DFS Maze", "Bidirectional Bredth First Search", "Depth First Search", "Dijkstra's Algorithm"];
+    mazeDropdown.innerHTML = e.srcElement.innerHTML;
+    currentMaze = value
+    // console.log(searchDropdown)
+}
+
+function beginMaze(){
+    switch(currentMaze){
+        case 0:
+            startDFSMaze();
+            break;
+        case 1:
+            startEllerMaze();
+            break;
+        case 2:
+            startKruskalMaze();
+            break;
+        case 3:
+            // startPrim
+            break;
+        default:
+            alert("Invalid Input");
+    }
+}
+
+function beginSearch(){
+    switch(currentSearch){
+        case 0:
+            startSearch('BFS');
+            break;
+        case 1:
+            startBidirectionalBFS();
+            break;
+        case 2:
+            startSearch('DFS');
+            break;
+        case 3:
+            startSearch('Dijkstra');
+            break;
+        default:
+            alert("Invalid Input");
+    }
+}
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("currentSpeed");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    ANIMATION_SPEED = this.value*this.value;
+    output.innerHTML = this.value;
+}
+
+</script>
+
 <script src="js/algorithms/pathfinder/BFS.js"></script>
 <script src="js/algorithms/pathfinder/DFS.js"></script>
 <script src="js/algorithms/pathfinder/Dijkstra.js"></script>
