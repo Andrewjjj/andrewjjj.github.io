@@ -129,52 +129,21 @@ function getDivPostion(div){
 }
 
 function switchWall(x,y){
-    // e.preventDefault();
-    // console.log(e);
-    // let div = e.srcElement;
-    // console.log(div);
-    // startDragVar = true;
-    // let y = div.getAttribute("rownum");
-    // let x = div.getAttribute("colnum");
     console.log("SWITCHWALL")
     let node = nodeBox.get(x, y);
     console.log(node);
     node.switchWall();
-    // if(node )
 }
-// var qq;
-// function switchWallDrag(e){
-//     // e.preventDefault();
-//     console.log("DragEnter")
-//     let div = e.srcElement.parentElement;
-//     console.log(div.classList);
-//     if(div.classList.contains("grid-box")){
-//         console.log("Yes!")
-//         let y = div.getAttribute("rownum");
-//         let x = div.getAttribute("colnum");
-//         console.log(x, y);
-//         let node = nodeBox.get(x, y);
-//         node.switchWall();
-//     }
-//     else{
-//         console.log("NOPE!")
-//     }
-// }
 
 function switchWallExit(e){
     // startDragVar = false;
 }
 
 function setupStartEndNode(){
-    // console.log(START_NODE);
     startNode = nodeBox.get(START_NODE[0], START_NODE[1]);
     endNode = nodeBox.get(END_NODE[0],END_NODE[1]);
-    // const startNodeDiv = getDivAtIndex(startNode.x, startNode.y);
-    // const endNodeDiv = getDivAtIndex(endNode.x, endNode.y);
     startNode.setStart();
     endNode.setEnd();
-    // setNodeColor(startNode, '#7DCEA0');
-    // setNodeColor(endNode, "#BB8FCE");
 }
 
 function setNodeColor(node, color){
@@ -199,22 +168,6 @@ function reset(){
 
 }
 
-// var qq;
-// function startBFS(){
-//     disableButtons();
-//     // reset();
-//     let [visitArray, valid] = BFS(startNode, endNode, null, null);
-//     let pathArray = [];
-//     if(valid){
-//         pathArray = shortestPath(startNode, endNode);
-//     }
-//     animate(visitArray, pathArray)
-//     .then(() => {
-//         if(!valid) alert("No Valid Path Found!")
-//         enableButtons();
-//     })
-// }
-
 function stopAnimation(){
     if(running == true){
         stopFlag = true;
@@ -229,9 +182,9 @@ function startSearch(searchMethod){
     }
     else if(searchMethod == "BidirectionalBFS"){
         [visitArray, valid] = BidirectionalBFS(startNode, endNode);
-        console.log("Valid?!")
-        console.log(visitArray);
-        console.log(valid);
+        // console.log("Valid?!")
+        // console.log(visitArray);
+        // console.log(valid);
     }
     else if(searchMethod == "DFS"){
         [visitArray, valid] = DFS(startNode, endNode);
@@ -304,6 +257,13 @@ function startKruskalMaze(){
     reset();
     let wallArray = coverWall(GRID_WIDTH, GRID_HEIGHT);
     let pathArray = RandomizedKruskal(GRID_WIDTH, GRID_HEIGHT);
+    animateMaze(wallArray, pathArray);
+}
+
+function startPrimMaze(){
+    reset();
+    let wallArray = coverWall(GRID_WIDTH, GRID_HEIGHT);
+    let pathArray = RandomizedPrim(GRID_WIDTH, GRID_HEIGHT);
     animateMaze(wallArray, pathArray);
 }
 
