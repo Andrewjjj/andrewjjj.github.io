@@ -165,7 +165,7 @@ function reset(){
             node.reset();
         }
     }
-
+    enableButtons();
 }
 
 function stopAnimation(){
