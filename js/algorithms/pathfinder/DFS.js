@@ -8,33 +8,23 @@ function DFS(startNode, endNode){
     while(!stack.isEmpty()){
         let node = stack.pop();
         node.visit();
-        // if(node.prev != prev){
-        
-        console.log(node)
         node.prev = prev;
         prev = node;
         visitArray.push(node);
-        console.log(node != startNode)
-        
-        // }
         if(node == endNode){
-            console.log("Found")
+            // console.log("Found")
             reorganizePathDFS(endNode, visitStack);
             return [visitArray, true];
         }
-        // console.log(node);
         let neighborNodes = getAllNeighborNodes(node);
         for (let n of neighborNodes){
             if(n.visited == false && n.isWall() == false){
                 stack.push(n);
                 visitStack.push(n);
-                // n.prev = node;
-                // visitArray.push(n);
-                
             }
         }
     }
-    console.log("Not Found")
+    // console.log("Not Found")
 
     return [visitArray, false];
 }
@@ -49,8 +39,8 @@ function reorganizePathDFS(endNode, stack){
         }
         node = prevNode;
     }
-    console.log("PATH")
-    console.log(endNode);
+    // console.log("PATH")
+    // console.log(endNode);
 }
 
 function isNeighborNode(node1, node2){
@@ -65,15 +55,15 @@ function sortShortestDFS(startNode, endNode){
     let temp = node;
     path.push(node);
     a=200;
-    console.log("G")
+    // console.log("G")
     while(node != startNode && a-->0){
-        console.log("23")
+        // console.log("23")
         node = node.prev;
         while(Math.abs(node.prev.x-temp.x)>1 || Math.abs(node.prev.y-temp.y)>1){
             node = node.prev;
-            console.log("45")
-            console.log(node);
-            console.log(temp);
+            // console.log("45")
+            // console.log(node);
+            // console.log(temp);
             a--;
             if(a<0) return;
         }

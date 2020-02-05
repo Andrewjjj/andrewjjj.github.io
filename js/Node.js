@@ -67,8 +67,8 @@ class Node {
         this.div = div;
         this.divChild = document.createElement('div');
         this.divChild.style.display = 'block';
-        this.divChild.style.width = "25px";
-        this.divChild.style.height = "25px";
+        this.divChild.style.width = "1.8vw";
+        this.divChild.style.height = "1.8vw";
         this.divChild.className += " node";
         this.div.appendChild(this.divChild);
     }
@@ -86,7 +86,9 @@ class Node {
     }
 
     animateVisit(){
-        this.divChild.className += " visitedNode";
+        if(this.startNode == false && this.endNode == false){
+            this.divChild.className += " visitedNode";
+        }
        
         // console.log("Animate");
         // this.div.className += "visitedNode";

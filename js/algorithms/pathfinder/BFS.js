@@ -6,23 +6,16 @@ function BFS(startNode, endNode, grid_width, grid_height){
     let queue = new Queue();
     queue.enqueue(startNode);
     startNode.visit();
-    // let safe=100;
     while(true){
-        // console.log(queue.data);
         if(queue.length() == 0){
             console.log("No path Found")
             return [visitArray, false];
         }
         let queueLen = queue.length();
-        // safe--;
-        // if(safe < 0) return visitArray;
-        // console.log("Queue Len: " + queueLen);
         while(queueLen != 0){
             let node = queue.dequeue();
             var neighborNodes = getAllNeighborNodes(node);
-            // console.log(neighborNodes);
             for(let n of neighborNodes){
-                // console.log
                 if(n.visited == false && n.isWall() == false){
                     queue.enqueue(n);
                     n.visit();
@@ -35,9 +28,7 @@ function BFS(startNode, endNode, grid_width, grid_height){
             }
             queueLen--;
         } 
-        
     }
-    // return visitArray;
 }
 
 function BidirectionalBFS(startNode, endNode){
@@ -45,7 +36,6 @@ function BidirectionalBFS(startNode, endNode){
     let endQueue = new Queue();
 
     let visitArray = [];
-    // let visitArray2 = [];
     startQueue.enqueue(startNode);
     endQueue.enqueue(endNode);
     while(true){
@@ -96,31 +86,23 @@ function shortestPath(startNode, endNode){
     var path = [];
     var node = endNode;
     path.push(node);
-    // a=200;
-    console.log("going In")
-    console.log(startNode)
-    console.log(endNode);
     while(node != startNode){
-        // console.log(a)
         node = node.prev;
         path.push(node);
     }
-    // console.log(path)
     return path;
 }
 
 function shortestPathBidirectional(startNode, endNode, intersectNode){
     var path = [];
-    console.log(intersectNode)
+    // console.log(intersectNode)
     var nodeS = intersectNode;
     var nodeE = intersectNode;
-    a=10;
     while(nodeS != startNode || nodeE != endNode){
-        console.log("Loop")
-        console.log(nodeS)
-        console.log(nodeE)
+        // console.log("Loop")
+        // console.log(nodeS)
+        // console.log(nodeE)
         if(nodeS != startNode){
-            
             path.push(nodeS);
             nodeS = nodeS.prev;
         }
@@ -128,7 +110,6 @@ function shortestPathBidirectional(startNode, endNode, intersectNode){
             path.push(nodeE);
             nodeE = nodeE.next;
         }
-        if(a-- < 0) break;
     }
     return path;
 }

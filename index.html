@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="css/main.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
@@ -35,7 +35,7 @@
                 <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownMaze(event, 3)">Randomized Prim's Algorithm</a>
             </div>
         </div>
-        <button type="button" class="btn btn-primary" onclick="beginMaze()" id="beginMazeBtn">Begin Maze Generation</button>
+        <button type="button" class="btn btn-primary" onclick="beginMaze()" id="beginMazeBtn">Begin Maze</button>
     </div>
 
     <div class="btn-group">
@@ -53,8 +53,21 @@
         <button type="button" class="btn btn-success" onclick="beginSearch()" id="beginSearchBtn">Begin Search</button>
     </div>
 
+    <!-- <div class="btn-group">
+        <button type="button" class="btn btn-warning" onclick="removeWeightDisplay();setRandomWeight();showNodeWeightOnDiv();" id="weigntBtn">Randomize Weights</button>
+    </div>
+
     <div class="btn-group">
-        <button type="button" class="btn btn-danger" onclick="reset()" id="resetBtn">Reset</button>
+        <button type="button" class="btn btn-warning" onclick="showNodeWeightOnDiv();" id="weigntBtn">Show Weights</button>
+    </div> -->
+
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger" onclick="reset('PATH')" id="resetPathBtn">Reset</button>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger" onclick="reset('ALL')" id="resetBtn">Reset ALL</button>
     </div>
 
     <div class="btn-group" style="text-align: center">
@@ -79,6 +92,20 @@
 </nav>
 
 <nav id="moreNavBar" class="navbar navbar-expand-lg" style="display:none; text-align: center; background-color: #9cc3dd;">
+    <!-- <div class="btn-group" style="text-align: center">
+        currentSpeed:
+        <div id="currentSpeed"></div>
+    </div>
+
+    <div class="btn-group" style="display: block !important; text-align: center">
+        <p>
+            Animation Speed:
+        </p>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="20" value="4" class="slider" id="myRange">
+        </div>
+    </div> -->
+
     <div class="btn-group">
         <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#changesModal">
             Changes Log
@@ -106,7 +133,7 @@ let currentSearch = -1;
 
 function showMoreMenu(){
     let moreNavBar = document.getElementById("moreNavBar");
-    moreNavBar.style.display = (moreNavBar.style.display == "none") ? "block" : "none";
+    moreNavBar.style.display = (moreNavBar.style.display == "none") ? "flex" : "none";
     // console.log(moreNavBar);
 }
 function dropdownSearch(e, value){
@@ -175,6 +202,20 @@ slider.oninput = function() {
 }
 
 </script>
+
+<script src="js/algorithms/pathfinder/BFS.js"></script>
+<script src="js/algorithms/pathfinder/DFS.js"></script>
+<script src="js/algorithms/pathfinder/Dijkstra.js"></script>
+<script src="js/algorithms/DS/Queue.js"></script>
+<script src="js/algorithms/DS/Stack.js"></script>
+<script src="js/algorithms/maze/DFSMaze.js"></script>
+<script src="js/algorithms/maze/Eller.js"></script>
+<script src="js/algorithms/maze/RandomizedKruskal.js"></script>
+<script src="js/algorithms/maze/RandomizedPrim.js"></script>
+
+<script src='js/Node.js'></script>
+<script src='js/main.js'></script>
+
 
 
 <!-- Modals -->
@@ -269,18 +310,3 @@ slider.oninput = function() {
     </div>
     </div>
 </div>
-
-
-
-<script src="js/algorithms/pathfinder/BFS.js"></script>
-<script src="js/algorithms/pathfinder/DFS.js"></script>
-<script src="js/algorithms/pathfinder/Dijkstra.js"></script>
-<script src="js/algorithms/DS/Queue.js"></script>
-<script src="js/algorithms/DS/Stack.js"></script>
-<script src="js/algorithms/maze/DFSMaze.js"></script>
-<script src="js/algorithms/maze/Eller.js"></script>
-<script src="js/algorithms/maze/RandomizedKruskal.js"></script>
-<script src="js/algorithms/maze/RandomizedPrim.js"></script>
-
-<script src='js/Node.js'></script>
-<script src='js/main.js'></script>

@@ -1,6 +1,7 @@
 #grid-container {
     text-align: center;
     margin-top: 30px;
+    margin-bottom: 30px;
     /* border-top: 1px solid grey;
     border-left: 1px solid grey; */
 }
@@ -55,18 +56,39 @@
 }
 
 .grid-box {
+    /* outline: 1px rgba(37, 37, 37, 0.75) solid; */
     outline: 1px solid grey;
     /* border: 1px solid gray;
     border-right: 0;
     border-top: 0; */
     /* border-bottom: 1px solid grey;
     border-right: 1px solid grey; */
-    min-width: 10px;
-    min-height: 10px;
+    /* min-width: 10px;
+    min-height: 10px; */
+    width: 1.8vw;
+    height: 1.8vw;
+    /* border-collapse: collapse !important; */
+    /* min-width: (100/60)vw;
+    min-height: (100/40)vh; */
     display: inline-block;
     /* margin-right: 2px;
     margin-top: 2px; */
-    margin: 0 1px 1px 0;
+    margin: 0 1px 2px 0;
+}
+.wallNode p{
+    color:rgba(0, 0, 0, 0);
+}
+.startNode p{
+    color: rgba(0,0,0,0);
+}
+
+.endNode p{
+    color: rgba(0,0,0,0);
+}
+
+.node,.startNode,.endNode,.wallNode,.queueNode,.visitedNode,.pathNode {
+    width: 1.8vw;
+    height: 1.8vw;
 }
 
 .startNode{
@@ -224,4 +246,13 @@
     border-radius: 50%;
     background: #4CAF50;
     cursor: pointer;
+}
+
+.slideup, .slidedown {
+    max-height: 0;            
+    overflow-y: hidden;
+    -webkit-transition: max-height 0.5s ease-in-out;
+    -moz-transition: max-height 0.5s ease-in-out;
+    -o-transition: max-height 0.5s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
 }

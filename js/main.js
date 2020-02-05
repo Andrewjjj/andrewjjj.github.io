@@ -26,11 +26,25 @@ console.log("Start")
 init();
 
 function init(){
+    
+    // setRandomWeight();
+
     try{
         initializeGrid();
         setupStartEndNode();
 
     } catch(err){console.log(err)}
+
+    // showNodeWeightOnDiv();
+    
+}
+
+function removeWeightDisplay(){
+    for (let nodeRow of nodeBox.nodeBox){
+        for (let node of nodeRow){
+            node.divChild.children[0].remove();
+        }
+    }
 }
 
 function initializeGrid(){
@@ -54,6 +68,28 @@ function initializeGrid(){
         gridContainer.appendChild(rowContainer);
     }
     nodeBox.set(nodeContainer);
+}
+
+function setRandomWeight(){
+    for(let nodeRow of nodeBox.nodeBox){
+        for(let node of nodeRow){
+            node.distance = parseInt(Math.random()*21);
+        }
+    }
+}
+
+function showNodeWeightOnDiv(){
+    for(let nodeRow of nodeBox.nodeBox){
+        for (let node of nodeRow){
+            // let textDiv = document.createElement('div');
+            // let weight = node.distance;
+            let p = document.createElement('p');
+            // p.style.fontSize = '8px';
+            p.innerHTML = node.distance;
+            // textDiv.appendChild(p);
+            node.divChild.appendChild(p);
+        }
+    }
 }
 
 function addDivEventListener(div){
@@ -155,14 +191,26 @@ function getDivAtIndex(x, y){
     return gridContainer.children[y].children[x];
 }
 
-function reset(){
+function reset(flag){
     if(running == true){
         running = false;
     }
     for(let nodeRow of nodeBox.nodeBox){
         for(let node of nodeRow){
+            if(flag == "ALL"){
+                node.reset();
+            }
+            // else if(flag == "WALL"){
+            //     if(node.isWall()){
+            //         node.setNormal();
+            //     }
+            // }
+            else if(flag == "PATH"){
+                if(!node.isWall()){
+                    node.reset();
+                }
+            }
             // console.log(node);
-            node.reset();
         }
     }
     enableButtons();
@@ -232,6 +280,16 @@ function resetWall(){
     }
 }
 
+function resetPath(){
+    for(let nodeRow of nodeBox.nodeBox){
+        for(let node of nodeRow){
+            if(!node.isWall()){
+                node.reset();
+            }
+        }
+    }
+}
+
 function startDFSMaze(){
     reset();
     let wallArray=coverWall(GRID_WIDTH, GRID_HEIGHT);
@@ -244,11 +302,7 @@ function startDFSMaze(){
 function startEllerMaze(){
     reset();
     let wallArray=coverWall(GRID_WIDTH, GRID_HEIGHT);
-    // console.log("WallArr")
-    // console.log(wallArray)
     let pathArray = EllersAlgorithm(GRID_WIDTH, GRID_HEIGHT);
-    // console.log("PathArr")
-    // console.log(pathArray)
     animateMaze(wallArray, pathArray);
     // testAnimate(arr);
 }
