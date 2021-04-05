@@ -1,0 +1,312 @@
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="https://github.com/Andrewjjj">Andrew's Github Page</a>
+
+    </ul>
+    <ul class="navbar-nav navbar-center">
+        <li class="nav-item">
+            <a class="navbar-brand" href="javascript:void(0)">Maze Generation / Pathfinding Algorithm Visualizer</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav navbar-right">
+        <li class="nav-item">
+            <a class="navbar-brand" href="https://github.com/Andrewjjj">Credits</a>
+        </li>
+    </ul>
+</nav>
+
+<nav class="navbar navbar-expand-lg" style="background-color: #9cc3dd;">
+    <div class="btn-group">
+        <div class="dropdown btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" id="mazeBtn">
+            Maze Generation Algorithms
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownMaze(event, 0)">Recursive Backtracker Algorithm</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownMaze(event, 1)">Eller's Algorithm</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownMaze(event, 2)">Randomized Kruskal's Algorithm</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownMaze(event, 3)">Randomized Prim's Algorithm</a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="beginMaze()" id="beginMazeBtn">Begin Maze</button>
+    </div>
+
+    <div class="btn-group">
+        <div class="dropdown btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" id="searchBtn">
+            Search Algorithms
+            </button>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownSearch(event, 0)">Bredth First Search</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownSearch(event, 1)">Bidirectional Bredth First Search</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownSearch(event, 2)">Depth First Search</a>
+                <a class="dropdown-item" href="javascript:void(0)" onclick="dropdownSearch(event, 3)">Dijkstra's Algorithm</a>
+            </div>
+        </div>
+        <button type="button" class="btn btn-success" onclick="beginSearch()" id="beginSearchBtn">Begin Search</button>
+    </div>
+
+    <!-- <div class="btn-group">
+        <button type="button" class="btn btn-warning" onclick="removeWeightDisplay();setRandomWeight();showNodeWeightOnDiv();" id="weigntBtn">Randomize Weights</button>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-warning" onclick="showNodeWeightOnDiv();" id="weigntBtn">Show Weights</button>
+    </div> -->
+
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger" onclick="reset('PATH')" id="resetPathBtn">Reset</button>
+    </div>
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-danger" onclick="reset('ALL')" id="resetBtn">Reset ALL</button>
+    </div>
+
+    <div class="btn-group" style="text-align: center">
+        currentSpeed:
+        <div id="currentSpeed"></div>
+    </div>
+
+    <div class="btn-group" style="display: block !important; text-align: center">
+        <p>
+            Animation Speed:
+        </p>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="20" value="4" class="slider" id="myRange">
+        </div>
+    </div>
+
+    <div class="align-right">
+        <button type="button" class="btn btn-secondary dropdown-toggle" onclick="showMoreMenu()">
+            More
+        </button>
+    </div>
+</nav>
+
+<nav id="moreNavBar" class="navbar navbar-expand-lg" style="display:none; text-align: center; background-color: #9cc3dd;">
+    <!-- <div class="btn-group" style="text-align: center">
+        currentSpeed:
+        <div id="currentSpeed"></div>
+    </div>
+
+    <div class="btn-group" style="display: block !important; text-align: center">
+        <p>
+            Animation Speed:
+        </p>
+        <div class="slidecontainer">
+            <input type="range" min="0" max="20" value="4" class="slider" id="myRange">
+        </div>
+    </div> -->
+
+    <div class="btn-group">
+        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#changesModal">
+            Changes Log
+        </button>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#creditsModal">
+            Credits
+        </button>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#upcomingModal">
+            Upcoming Changes
+        </button>
+    </div>
+</nav>
+
+<div id='grid-container'>
+
+</div>
+
+<script>
+let currentMaze = -1;
+let currentSearch = -1;
+
+function showMoreMenu(){
+    let moreNavBar = document.getElementById("moreNavBar");
+    moreNavBar.style.display = (moreNavBar.style.display == "none") ? "flex" : "none";
+    // console.log(moreNavBar);
+}
+function dropdownSearch(e, value){
+    console.log(e.srcElement.innerHTML)
+    let searchDropdown = document.getElementById("searchBtn");
+    // let searchList = ["Bredth First Search", "Bidirectional Bredth First Search", "Depth First Search", "Dijkstra's Algorithm"];
+    searchDropdown.innerHTML = e.srcElement.innerHTML;
+    currentSearch = value
+    // console.log(searchDropdown)
+}
+
+function dropdownMaze(e, value){
+    let mazeDropdown = document.getElementById("mazeBtn");
+    // let searchList = ["DFS Maze", "Bidirectional Bredth First Search", "Depth First Search", "Dijkstra's Algorithm"];
+    mazeDropdown.innerHTML = e.srcElement.innerHTML;
+    currentMaze = value
+    // console.log(searchDropdown)
+}
+
+function beginMaze(){
+    switch(currentMaze){
+        case 0:
+            startDFSMaze();
+            break;
+        case 1:
+            startEllerMaze();
+            break;
+        case 2:
+            startKruskalMaze();
+            break;
+        case 3:
+            startPrimMaze();
+            break;
+        default:
+            alert("Invalid Input");
+    }
+}
+
+function beginSearch(){
+    switch(currentSearch){
+        case 0:
+            startSearch('BFS');
+            break;
+        case 1:
+            startBidirectionalBFS();
+            break;
+        case 2:
+            startSearch('DFS');
+            break;
+        case 3:
+            startSearch('Dijkstra');
+            break;
+        default:
+            alert("Invalid Input");
+    }
+}
+
+var slider = document.getElementById("myRange");
+var output = document.getElementById("currentSpeed");
+output.innerHTML = slider.value; // Display the default slider value
+
+// Update the current slider value (each time you drag the slider handle)
+slider.oninput = function() {
+    ANIMATION_SPEED = parseInt(this.value*(this.value/2));
+    output.innerHTML = this.value;
+}
+
+</script>
+
+<script src="js/algorithms/pathfinder/BFS.js"></script>
+<script src="js/algorithms/pathfinder/DFS.js"></script>
+<script src="js/algorithms/pathfinder/Dijkstra.js"></script>
+<script src="js/algorithms/DS/Queue.js"></script>
+<script src="js/algorithms/DS/Stack.js"></script>
+<script src="js/algorithms/maze/DFSMaze.js"></script>
+<script src="js/algorithms/maze/Eller.js"></script>
+<script src="js/algorithms/maze/RandomizedKruskal.js"></script>
+<script src="js/algorithms/maze/RandomizedPrim.js"></script>
+
+<script src='js/Node.js'></script>
+<script src='js/main.js'></script>
+
+
+
+<!-- Modals -->
+<div class="modal fade" id="changesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Changes Log</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        <hr>
+        <p>2019-02-02. Finished Randomized Prim's Maze Generation Algorithm</p>
+        <p>2019-02-02. Made UI</p>
+        <hr>
+        <p>2019-01-29. Fixed some errors in Bidirectional BFS Search Algorithm</p>
+        <hr>
+        <p>2020-01-02. Added Bidirectional BFS Search Algorithm</p>
+        <hr>
+        <p>2019-12-31. Started Randomized Prim's Algorithm</p>
+        <p>2019-12-31. Finished Randomized Kruskal's Algorithm</p>
+        <hr>
+        <p>2019-12-30. Started Randomized Kruskal's Maze Generation Algorithm</p>
+        <p>2019-12-30. Fixed some errors with Recursive Backtracking Algorithm</p>
+        <p>2019-12-30. Fixed some edge cases with Dijkstra's Algorithm</p>
+        <hr>
+        <p>2019-12-28. Fixed a bug with Recursive Backtracking Algorithm</p>
+        <hr>
+        <p>2019-12-27. Minor bug fixes and refactoring</p>
+        <p>2019-12-27. Added Recursive Backtracker (DFS) Maze Algorithm</p>
+        <hr>
+        <p>2019-12-26. Added Maze Algorithm Foundation.</p>
+        <hr>
+        <p>2019-12-25. Added Walls</p>
+        <p>2019-12-25. Started and Finished Dijkstra's algorithm</p>
+        <p>2019-12-25. Finished DFS.</p>
+        <hr>
+        <p>2019-12-20. Finished BFS and implemented Shortest Path algorithm.</p>
+        <hr>
+        <p>2019-12-19. Animation foundation and BFS and DFS implemented</p>
+        <p>2019-12-19. Basic UI, Grids, Data Structures implemented</p>
+        <p>2019-12-19. Initial Project Commit.</p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal fade" id="creditsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Credits</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        <hr>
+        <p>I'd like to say special thanks to Clément Mihailescu for being such an inspirational model for me.</p>
+        <p>He probably doesn't know me but his videos have been a very good motivation for me to start programming and doing projects.</p>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal fade" id="upcomingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">TODO List:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
+        <div class="modal-body">
+        <hr>
+        <p>Add Weights on nodes and create weighted search algorithms</p>
+        <p>A* Search Algorithm</p>
+        <p>Greedy Best Search Algorithm</p>
+        <p>Wilson's Maze Generation Algorithm</p>
+        <p>Recursive Division Maze Generation Algorithm</p>
+    </div>
+    </div>
+</div>
