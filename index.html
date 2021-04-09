@@ -1,35 +1,220 @@
-
 <head>
+    <script   src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>
     <!-- Font Awesome -->
-    <link
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <!-- Font Awesome -->
+    <!-- <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
     rel="stylesheet"
-    />
+    /> -->
     <!-- Google Fonts -->
-    <link
+    <!-- <link
     href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
     rel="stylesheet"
-    />
+    /> -->
     <!-- MDB -->
-    <link
+    <!-- <link
     href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css"
     rel="stylesheet"
-    />
+    /> -->
 
     <!-- MDB -->
-    <script
+    <!-- <script
     type="text/javascript"
     src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"></script>
+    ></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/js/mdb.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css"/> -->
+    <link rel="stylesheet" href="style.css"/>
 </head>
 
 <body>
-    <div class="content">
-        <section id="welcome" class="d-flex align-items-center h-100 justify-content-center">
-            <div>
-                Welcome
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-3 pl-5" style="z-index: 1">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#">Home</a>
+            <!-- Collapse button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+    
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item active">
+                    <a class="nav-link px-5" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link px-5" href="/Projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-5" href="/About">About Me</a>
+                </li>
+        
+                <!-- Dropdown -->
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li> -->
+        
+            </ul>
+            <!-- Links -->
+    
+        <!-- <form class="form-inline">
+            <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             </div>
+        </form>
+        </div> -->
+        <!-- Collapsible content -->
+        </div> 
+    </nav>
+    <!--/.Navbar-->
+
+    <!-- <img src="img/main-bg.jpg"/> -->
+    <div class="content mt-5 mx-5">
+        <section class="text-center mb-5" id="projectSection">
+
+            <!--Grid row-->
+            <div class="row mb-4">
+
+            <!--Grid column-->
+            <div class="col-md-4 mb-4">
+                <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Work/6-col/img%20(41).jpg');">
+
+                <!-- Content -->
+                <div class="text-white text-center d-flex align-items-center rgba-blue-strong py-5 px-4">
+                    <div>
+                    <h3 class="mb-4 mt-4 font-weight-bold">
+                        <strong>Project title</strong>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                        optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                        Odit sed qui, dolorum!.</p>
+                    <a class="btn btn-outline-white btn-sm">
+                        <i class="fas fa-clone left"></i> View project</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-4 mb-4">
+                <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Work/6-col/img%20(14).jpg');">
+
+                    <!-- Content -->
+                    <div class="text-white text-center d-flex align-items-center rgba-teal-strong py-5 px-4">
+                        <div>
+                        <h3 class="mb-4 mt-4 font-weight-bold">
+                            <strong>Project title</strong>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                            optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                            Odit sed qui, dolorum!.</p>
+                        <a class="btn btn-outline-white btn-sm">
+                            <i class="fas fa-clone left"></i> View project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Work/6-col/img%20(14).jpg');">
+
+                    <!-- Content -->
+                    <div class="text-white text-center d-flex align-items-center rgba-teal-strong py-5 px-4">
+                        <div>
+                        <h3 class="mb-4 mt-4 font-weight-bold">
+                            <strong>Project title</strong>
+                        </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                            optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                            Odit sed qui, dolorum!.</p>
+                        <a class="btn btn-outline-white btn-sm">
+                            <i class="fas fa-clone left"></i> View project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
+            <!--Grid row-->
+            <div class="row">
+
+            <!--Grid column-->
+            <div class="col-md-4 mb-4">
+                <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Work/6-col/img%20(11).jpg');">
+
+                <!-- Content -->
+                <div class="text-white text-center d-flex align-items-center rgba-green-strong py-5 px-4">
+                    <div>
+                    <h3 class="mb-4 mt-4 font-weight-bold">
+                        <strong>123123</strong>
+                    </h3>
+                    <p>Lorem ips</p>
+                    <a class="btn btn-outline-white btn-sm">
+                        <i class="fas fa-clone left"></i> View project</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-4 mb-4">
+                <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Work/6-col/img%20(42).jpg');">
+
+                <!-- Content -->
+                <div class="text-white text-center d-flex align-items-center rgba-stylish-strong py-5 px-4">
+                    <div>
+                    <h3 class="mb-4 mt-4 font-weight-bold">
+                        <strong>Project title</strong>
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+                        optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+                        Odit sed qui, dolorum!.</p>
+                    <a class="btn btn-outline-white btn-sm">
+                        <i class="fas fa-clone left"></i> View project</a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!--Grid column-->
+
+            </div>
+            <!--Grid row-->
+
         </section>
         <button class="btn btn-primary"></button>
     </div>    
@@ -38,3 +223,80 @@
 <script>
     
 </script>
+<script src="script.js"></script>
+
+<script>
+
+function createElement(element, opts={}){
+    let e = document.createElement(element);
+    for(let key of Object.keys(opts)){
+        if(key == "attributes"){
+            for(let attr of Object.keys(opts[key])){
+                e.setAttribute(attr, opts[key][attr]);
+            } 
+        }
+        else{
+            e[key] = opts[key];
+        }
+    }
+    return e;
+}
+
+function addProject(){
+    let projectSection = document.getElementById("projectSection")
+    let projectBox = createProjectBox(null, "Project 1", "123123")
+    projectSection.appendChild(projectBox)
+}
+// <div class="col-md-4 mb-4">
+
+function createProjectBox(imageURL, projectTitle, descriptionText){
+    let colBox = createElement("div", {
+        className: "col-md-4 mb-4",
+    })
+    let box = createElement("div", {
+        className: "card card-image",
+        // attributes: {
+        //     style="background-image: url('" + imageURL + "');"
+        // }
+    })
+    let innerBox = createElement("div", {
+        className: "text-white text-center d-flex align-items-center rgba-blue-strong py-5 px-4"
+    })
+    let content = createElement("div")
+    let title = createElement("h3", {
+        className: "mb-4 mt-4 font-weight-bold"
+    })
+    let titleString = createElement("strong", {
+        innerText: projectTitle
+    })
+    let description = createElement("p", {
+        innerText: descriptionText
+    })
+    content.appendChild(title)
+    title.appendChild(titleString)
+    content.appendChild(description)
+    colBox.appendChild(box);
+    box.appendChild(innerBox);
+    innerBox.appendChild(content)
+    return colBox;
+}
+
+window.onload = function(){
+    addProject();
+}
+</script>
+<!-- <div class="card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Horizontal/Work/6-col/img%20(41).jpg');">
+
+    <div class="text-white text-center d-flex align-items-center rgba-blue-strong py-5 px-4">
+        <div>
+        <h3 class="mb-4 mt-4 font-weight-bold">
+            <strong>Project title</strong>
+        </h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat fugiat, laboriosam, voluptatem,
+            optio vero odio nam sit officia accusamus minus error nisi architecto nulla ipsum dignissimos.
+            Odit sed qui, dolorum!.</p>
+        <a class="btn btn-outline-white btn-sm">
+            <i class="fas fa-clone left"></i> View project</a>
+        </div>
+    </div>
+</div> -->
