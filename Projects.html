@@ -78,10 +78,13 @@
        
     </nav>
 
+    <div class="content m-5 text-center">
+        <h3>Projects</h3>
+        <div id="projectContent" class="row m-5">
 
-    <div id="projectContent" class="m-5">
-
+        </div>
     </div>
+    
 </body>
 <script src="script.js"></script>
 <script>
@@ -94,13 +97,71 @@ function addProject(){
 
 window.onload = function () {
     let div=document.getElementById("projectContent")
+    let colDiv1 = createElement("div", {
+        className: "col"
+    })
+    let colDiv2 = createElement("div", {
+        className: "col"
+    })
+    let colDiv3 = createElement("div", {
+        className: "col"
+    })
+
+    let webvisualization = new ProjectBox(
+        "Web-based Real-Time Sensor Data Visualization", 
+        `A project worked with the Government of Alberta to deploy sensors all across Alberta and view data online real time`,
+        "javascript:void(0)",
+        ["JavaScript", "Docker", "React.js", "Node.js", "Arduino", "c++", "PostgreSQL", "Full Stack Web Development"],
+        "img/projects/mini-soccer.png"
+    )
+    let insanityEngine = new ProjectBox(
+        "Insanity Engine", 
+        `A custom made game engine project created from scratch`,
+        "javascript:void(0)",
+        ["c++", "Game Engine Development"],
+        "img/projects/mini-soccer.png"
+    )
+    let tuber = new ProjectBox(
+        "Tuber", 
+        `A Tutor - Student matching Android App created during Hackathon with a group of friends`,
+        "https://github.com/Andrewjjj/MiniSoccer",
+        ["Java", "Android Development", "Firebase"],
+        "img/projects/mini-soccer.png"
+    )
     let miniSoccerProject = new ProjectBox(
         "Mini Soccer", 
         `A multiplayer soccer game with Python inspired by FIFA. Connect with your friend through UDP connection. Uses Server-Client architecture.`,
         "https://github.com/Andrewjjj/MiniSoccer",
-        ["python", "Game", "Network", "Server-Client"],
-        "/img/projects/mini-soccer.png"
+        ["python", "Game Development", "Networking", "Server-Client"],
+        "img/projects/mini-soccer.png"
     )
-    div.appendChild(miniSoccerProject.div)
+    let pathfindingVisualizer = new ProjectBox(
+        "Pathfinding Generation / Maze Generation Visualizer", 
+        `A multiplayer soccer game with Python inspired by FIFA. Connect with your friend through UDP connection. Uses Server-Client architecture.`,
+        "https://github.com/Andrewjjj/MiniSoccer",
+        ["html", "JavaScript", "css", "algorithms", "Web Development"],
+        "img/projects/pathfinding-visualizer.png"
+    )
+    let sountrol = new ProjectBox(
+        "Sountrol", 
+        `An audio processing application that aims to enhance the end-user audio experience.`,
+        "https://github.com/Andrewjjj/Sountrol",
+        ["c++", "JUCE", "Audio Programming", "Hackathon Semi-Finalist"],
+        "img/projects/sountrol.png"
+    )
+
+
+
+
+    colDiv1.appendChild(webvisualization.div)
+    colDiv2.appendChild(sountrol.div)
+    colDiv3.appendChild(insanityEngine.div)
+    colDiv1.appendChild(miniSoccerProject.div)
+    colDiv2.appendChild(tuber.div)
+    colDiv3.appendChild(pathfindingVisualizer.div)
+
+    div.appendChild(colDiv1);
+    div.appendChild(colDiv2);
+    div.appendChild(colDiv3);
 }
 </script>

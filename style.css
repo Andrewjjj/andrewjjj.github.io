@@ -39,3 +39,8 @@ canvas {
 .rgba-projectbox-hover, .rgba-projectbox-hover:after {
     background-color: rgba(0, 99, 82, 0.8) !important;
 }
+
+.projectbox {
+    max-width: 450px;
+    min-width: 350px;
+}

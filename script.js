@@ -62,19 +62,31 @@ function createElement(element, opts={}){
 
 const BadgeColors = {
     Languages: {
-        list: ["c++", "JavaScript", "python", "Java"],
+        list: ["c++", "JavaScript", "python", "Java", "html", "css", "Docker", "Arduino", "PostgreSQL"],
         className: "bg-info"
     },
     Frameworks: {
-        list: ["Node.js", "React.js"],
+        list: ["Node.js", "React.js", "JUCE"],
         className: "bg-success"
+    },
+    skills: {
+        list: ["algorithms"],
+        className: "bg-warning"
+    },
+    group: {
+        list: ["Game Development", "Web Development", "Database Development", "Server Developemnt", "Server-Client", "Networking", "Audio Programming", "Android Development", "Full Stack Web Development"],
+        className: "bg-secondary"
+    },
+    special: {
+        list: ["Game Engine Development", "Hackathon Semi-Finalist"],
+        className: "bg-danger"
     }
 }
 // const Skills = ["Node.js", "React.js"]
 
 function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, imageSrc){
     let colBox = createElement("div", {
-        className: "col-md-4 mb-4",
+        className: "col-md-4 mb-4 projectbox",
     })
 //     <a href="#!">
 //     <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
@@ -141,7 +153,7 @@ function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, ima
     colBox.addEventListener("mouseenter", () => {
         innerBox.classList.remove("rgba-projectbox")
         innerBox.classList.add("rgba-projectbox-hover")
-        box.style.backgroundSize = "50%, 50%"
+        // box.style.backgroundSize = "200%, 200%"
     })
     colBox.addEventListener("mouseleave", () => {
         innerBox.classList.remove("rgba-projectbox-hover")
