@@ -86,7 +86,7 @@ const BadgeColors = {
 
 function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, imageSrc){
     let colBox = createElement("div", {
-        className: "col-md-4 mb-4 projectbox",
+        className: "col-md-4 px-0 mb-4 projectbox",
     })
 //     <a href="#!">
 //     <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
@@ -124,6 +124,7 @@ function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, ima
     //                         </div>
     let projectLink = createElement("a", {
         className: "btn btn-outline-white btn-sm",
+        href: projectURL,
     })
     let smallIcon = createElement("i", {
         className: "fas fa-clone left",
@@ -153,12 +154,12 @@ function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, ima
     colBox.addEventListener("mouseenter", () => {
         innerBox.classList.remove("rgba-projectbox")
         innerBox.classList.add("rgba-projectbox-hover")
-        // box.style.backgroundSize = "200%, 200%"
+        // box.style.backgroundSize = "100% 100%"
     })
     colBox.addEventListener("mouseleave", () => {
         innerBox.classList.remove("rgba-projectbox-hover")
         innerBox.classList.add("rgba-projectbox")
-        box.style.backgroundSize = "100%, 100%"
+        // box.style.backgroundSize = "100% 100%"
 
     })
 
