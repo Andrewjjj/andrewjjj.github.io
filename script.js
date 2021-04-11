@@ -24,7 +24,7 @@ window.onload = function() {
 
         canvas.style.opacity = 1 - y / firstImageMax;
 
-        console.log(y)
+        // console.log(y)
     }
 }
 
@@ -62,7 +62,7 @@ function createElement(element, opts={}){
 
 const BadgeColors = {
     Languages: {
-        list: ["c++", "JavaScript", "python", "Java", "html", "css", "Docker", "Arduino", "PostgreSQL"],
+        list: ["c++", "JavaScript", "python", "Java", "html", "css", "Docker", "Arduino", "PostgreSQL", "VHDL"],
         className: "bg-info"
     },
     Frameworks: {
@@ -70,11 +70,12 @@ const BadgeColors = {
         className: "bg-success"
     },
     skills: {
-        list: ["algorithms"],
+        list: ["algorithms", "communication"],
         className: "bg-warning"
     },
     group: {
-        list: ["Game Development", "Web Development", "Database Development", "Server Developemnt", "Server-Client", "Networking", "Audio Programming", "Android Development", "Full Stack Web Development"],
+        list: ["Game Development", "Web Development", "Database Development", "Server Developemnt", "Server-Client", "Networking", "Audio Programming", "Android Development", "Full Stack Web Development",
+                "Hardware"],
         className: "bg-secondary"
     },
     special: {
@@ -86,7 +87,11 @@ const BadgeColors = {
 
 function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, imageSrc){
     let colBox = createElement("div", {
+<<<<<<< HEAD
         className: "col mb-4 projectbox",
+=======
+        className: "col-md-4 px-0 mb-4 projectbox mx-auto",
+>>>>>>> eb1d106b656405ad41d2e55e239d4c76b9cb0a0d
     })
 //     <a href="#!">
 //     <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
@@ -124,6 +129,9 @@ function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, ima
     //                         </div>
     let projectLink = createElement("a", {
         className: "btn btn-outline-white btn-sm",
+        attributes: {
+            href: projectURL,
+        }
     })
     let smallIcon = createElement("i", {
         className: "fas fa-clone left",
@@ -138,7 +146,7 @@ function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, ima
         let colorClassName = "bg-primary";
         for(let key of Object.keys(BadgeColors)){
             if(BadgeColors[key].list.includes(tag)) {
-                console.log("s")
+                // console.log("s")
                 colorClassName = BadgeColors[key].className;
             }
         }
@@ -146,19 +154,19 @@ function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, ima
             className: "badge rounded-pill p-2 m-1 " + colorClassName,
             innerText: tag
         })
-        console.log(badge)
+        // console.log(badge)
         badgeDiv.appendChild(badge)
     }
 
     colBox.addEventListener("mouseenter", () => {
         innerBox.classList.remove("rgba-projectbox")
         innerBox.classList.add("rgba-projectbox-hover")
-        // box.style.backgroundSize = "200%, 200%"
+        // box.style.backgroundSize = "100% 100%"
     })
     colBox.addEventListener("mouseleave", () => {
         innerBox.classList.remove("rgba-projectbox-hover")
         innerBox.classList.add("rgba-projectbox")
-        box.style.backgroundSize = "100%, 100%"
+        // box.style.backgroundSize = "100% 100%"
 
     })
 

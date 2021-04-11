@@ -106,14 +106,18 @@ window.onload = function () {
     let colDiv3 = createElement("div", {
         className: "col"
     })
+    let divArr = [colDiv1, colDiv2, colDiv3]
+    console.log(divArr)
+    let allArr = []
 
     let webvisualization = new ProjectBox(
-        "Web-based Real-Time Sensor Data Visualization", 
+        "Web-Based Real-Time Sensor Data Visualization", 
         `A project worked with the Government of Alberta to deploy sensors all across Alberta and view data online real time`,
         "javascript:void(0)",
-        ["JavaScript", "Docker", "React.js", "Node.js", "Arduino", "c++", "PostgreSQL", "Full Stack Web Development"],
-        "img/projects/mini-soccer.png"
+        ["JavaScript", "Docker", "React.js", "Node.js", "Arduino", "c++", "PostgreSQL", "Full Stack Web Development", "Hardware"],
+        "img/projects/wbrt.png"
     )
+
     let insanityEngine = new ProjectBox(
         "Insanity Engine", 
         `A custom made game engine project created from scratch`,
@@ -121,6 +125,7 @@ window.onload = function () {
         ["c++", "Game Engine Development"],
         "img/projects/mini-soccer.png"
     )
+
     let tuber = new ProjectBox(
         "Tuber", 
         `A Tutor - Student matching Android App created during Hackathon with a group of friends`,
@@ -128,6 +133,7 @@ window.onload = function () {
         ["Java", "Android Development", "Firebase"],
         "img/projects/mini-soccer.png"
     )
+
     let miniSoccerProject = new ProjectBox(
         "Mini Soccer", 
         `A multiplayer soccer game with Python inspired by FIFA. Connect with your friend through UDP connection. Uses Server-Client architecture.`,
@@ -135,13 +141,15 @@ window.onload = function () {
         ["python", "Game Development", "Networking", "Server-Client"],
         "img/projects/mini-soccer.png"
     )
+
     let pathfindingVisualizer = new ProjectBox(
         "Pathfinding Generation / Maze Generation Visualizer", 
         `A multiplayer soccer game with Python inspired by FIFA. Connect with your friend through UDP connection. Uses Server-Client architecture.`,
-        "https://github.com/Andrewjjj/MiniSoccer",
+        "https://andrewjjj.github.io/Maze/index.html",
         ["html", "JavaScript", "css", "algorithms", "Web Development"],
         "img/projects/pathfinding-visualizer.png"
     )
+
     let sountrol = new ProjectBox(
         "Sountrol", 
         `An audio processing application that aims to enhance the end-user audio experience.`,
@@ -150,16 +158,74 @@ window.onload = function () {
         "img/projects/sountrol.png"
     )
 
+    let zyboZ7 = new ProjectBox(
+        "Zybo Z7-10 Testing Kit", 
+        `A program made to test Lab kits for a ECE course as volunteering`,
+        "https://github.com/Andrewjjj/ZyboZ7-Test",
+        ["VHDL", "Hardware"],
+        "img/projects/zybo-z7.png"
+    )
+
+    let snakeAndLadders = new ProjectBox(
+        "Snake and Ladders Arduino Game", 
+        `An extended version of Snake and Ladders game. It has additional components such as items and special abilities`,
+        "https://github.com/Andrewjjj/Snake-And-Ladders-Arduino",
+        ["c++", "Arduino", "Hardware", "communication"],
+        "img/projects/snakeAndLadders.png"
+    )
+
+    let flashGames = new ProjectBox(
+        "Various Flash Games", 
+        `A collection of Flash games made with ActionScript including RPG game, Dodging Game, Building Simulator Game and much more`,
+        "https://github.com/Andrewjjj/Flash-Projects",
+        ["ActionScript 2.0", "Game Development"],
+        "img/projects/snakeAndLadders.png"
+    )
+
+    let hackatool = new ProjectBox(
+        "Hackatool", 
+        `Hacking tool in attemp to replicate the infamous Cheat Engine. Currently, it has functionalities find processes, gain access to other programs memory, find a specific memory and change the value.`,
+        "https://github.com/Andrewjjj/Hackatool",
+        ["c++", "Windows API", "memory", "Hacking Tool"],
+        "img/projects/snakeAndLadders.png"
+    )
+
+    let nesEmulator = new ProjectBox(
+        "NES Emulator", 
+        `An very popular NES Emulator. Simulated the C6502 Processor and the 2C02 Processor`,
+        "https://github.com/Andrewjjj/NES_Emulator",
+        ["c++"],
+        "img/projects/NES_Emulator.png"
+    )
+
+    allArr.push(webvisualization)
+    allArr.push(insanityEngine)
+    allArr.push(sountrol)
+    allArr.push(pathfindingVisualizer)
+    allArr.push(hackatool)
+    allArr.push(nesEmulator)
+    allArr.push(tuber)
+    allArr.push(miniSoccerProject)
+    allArr.push(zyboZ7)
+    allArr.push(snakeAndLadders)
+    allArr.push(flashGames)
 
 
+    for(let i=0; i<allArr.length; i++){
+        console.log(i%3)
+        console.log(allArr[i])
+        divArr[i%3].appendChild(allArr[i].div)
+    }
 
-    colDiv1.appendChild(webvisualization.div)
-    colDiv2.appendChild(sountrol.div)
-    colDiv3.appendChild(insanityEngine.div)
-    colDiv1.appendChild(miniSoccerProject.div)
-    colDiv2.appendChild(tuber.div)
-    colDiv3.appendChild(pathfindingVisualizer.div)
-
+    // colDiv1.appendChild(webvisualization.div)
+    // colDiv2.appendChild(sountrol.div)
+    // colDiv3.appendChild(insanityEngine.div)
+    // colDiv1.appendChild(miniSoccerProject.div)
+    // colDiv2.appendChild(tuber.div)
+    // colDiv3.appendChild(pathfindingVisualizer.div)
+    // colDiv1.appendChild(zyboZ7.div)
+    // colDiv2.appendChild(snakeAndLadders.div)
+    
     div.appendChild(colDiv1);
     div.appendChild(colDiv2);
     div.appendChild(colDiv3);

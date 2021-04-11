@@ -33,7 +33,7 @@ canvas {
 } */
 
 .rgba-projectbox, .rgba-projectbox:after {
-    background-color: rgba(39, 39, 39, 0.897) !important;
+    background-color: rgba(39, 39, 39, 0.75) !important;
 }
 
 .rgba-projectbox-hover, .rgba-projectbox-hover:after {
