@@ -87,7 +87,11 @@ const BadgeColors = {
 
 function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, imageSrc){
     let colBox = createElement("div", {
+<<<<<<< HEAD
+        className: "col mb-4 projectbox",
+=======
         className: "col-md-4 px-0 mb-4 projectbox mx-auto",
+>>>>>>> eb1d106b656405ad41d2e55e239d4c76b9cb0a0d
     })
 //     <a href="#!">
 //     <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
