@@ -49,7 +49,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light p-3 pl-5" style="z-index: 1">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="/index.html">Home</a>
+        <a class="navbar-brand" href="index.html">Home</a>
             <!-- Collapse button -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
             aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,10 +67,13 @@
                     </a>
                 </li> -->
                 <li class="nav-item">
-                    <a class="nav-link px-5" href="/Projects.html">Projects</a>
+                    <a class="nav-link px-5" href="Projects.html">Projects</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link px-5" href="/About">About Me</a>
+                    <a class="nav-link px-5" href="#">Course Works</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link px-5" href="#">About Me</a>
                 </li>
         
             </ul>
@@ -122,7 +125,7 @@ window.onload = function () {
         "Insanity Engine", 
         `A custom made game engine project created from scratch`,
         "javascript:void(0)",
-        ["c++", "Game Engine Development"],
+        ["c++", "Custom Memory Allocators", "Entity-Component System", "Data-Oriented Design", "Multi-Threading", "Memory Management", "Game Engine Development"],
         "img/projects/mini-soccer.png"
     )
 
@@ -144,7 +147,7 @@ window.onload = function () {
 
     let pathfindingVisualizer = new ProjectBox(
         "Pathfinding Generation / Maze Generation Visualizer", 
-        `A multiplayer soccer game with Python inspired by FIFA. Connect with your friend through UDP connection. Uses Server-Client architecture.`,
+        `A Pure-JavaScript + CSS coded front-end application to help visualize various Maze-generation algorithms and Pathfinding algorithms`,
         "https://andrewjjj.github.io/Maze/index.html",
         ["html", "JavaScript", "css", "algorithms", "Web Development"],
         "img/projects/pathfinding-visualizer.png"
@@ -195,21 +198,24 @@ window.onload = function () {
         `An very popular NES Emulator. Simulated the C6502 Processor and the 2C02 Processor`,
         "https://github.com/Andrewjjj/NES_Emulator",
         ["c++"],
-        "img/projects/NES_Emulator.png"
+        "img/projects/snakeAndLadders.png"
     )
 
     allArr.push(webvisualization)
     allArr.push(insanityEngine)
     allArr.push(sountrol)
-    allArr.push(pathfindingVisualizer)
-    allArr.push(hackatool)
     allArr.push(nesEmulator)
+    allArr.push(hackatool)
+    allArr.push(pathfindingVisualizer)
     allArr.push(tuber)
     allArr.push(miniSoccerProject)
     allArr.push(zyboZ7)
     allArr.push(snakeAndLadders)
     allArr.push(flashGames)
 
+    let tagArr = getTagsFromProject(allArr);
+    console.log("tagArr");
+    console.log(tagArr);
 
     for(let i=0; i<allArr.length; i++){
         console.log(i%3)
@@ -229,5 +235,16 @@ window.onload = function () {
     div.appendChild(colDiv1);
     div.appendChild(colDiv2);
     div.appendChild(colDiv3);
+}
+
+function getTagsFromProject(projectArr){
+    let arr = []
+    for(let project of projectArr){
+        let projectTagArr = project.tagArr;
+        for(let tag of projectTagArr){
+            if(!arr.includes(tag)) arr.push(tag);
+        }
+    }
+    return arr;
 }
 </script>

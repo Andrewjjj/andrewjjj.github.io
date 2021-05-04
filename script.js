@@ -180,7 +180,6 @@ function createProjectBox(projectTitle, descriptionText, projectURL, tagArr, ima
 class ProjectBox {
     constructor(title, description, projectURL, tagArr, imageSrc){
         this.div = createProjectBox(title, description, projectURL, tagArr, imageSrc);
+        this.tagArr = tagArr
     }
-
-
 }
